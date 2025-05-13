@@ -1,0 +1,274 @@
+body {
+    background-color: #111827 !important; /* darker background */
+    color: #f3f4f6 !important;
+  }
+  
+  header,
+  footer {
+    background-color: #1f2937 !important; /* slightly lighter than body */
+  }
+  
+  main,
+  section,
+  .card,
+  .shadow-md,
+  .shadow-sm,
+  .bg-white {
+    background-color: #1e293b !important; /* slightly deeper than header */
+    color: #f3f4f6 !important;
+  }
+  
+
+a {
+  color: #93c5fd !important; /* Tailwind blue-300 */
+}
+
+input,
+select,
+textarea {
+  background-color: #374151 !important;
+  color: #f3f4f6 !important;
+  border-color: #4b5563 !important;
+}
+
+
+/* Cards and modals */
+.card,
+.shadow-md,
+.shadow-sm,
+#upload-modal .bg-white,
+.bg-white {
+  background-color: #2d3748  !important; /* dark gray */
+  color: #f3f4f6 !important; /* light text */
+}
+
+/* Inner text */
+.card p,
+.card h3,
+.shadow-md p,
+.shadow-md h3,
+.shadow-sm p,
+.shadow-sm h3 {
+  color: #e5e7eb !important;
+}
+
+/* Tag backgrounds */
+span.bg-blue-100,
+span.bg-green-100 {
+  background-color: #374151 !important;
+  color: #93c5fd !important;
+}
+/* FIX: Fully reset icon styling */
+/* General icons */
+header i,
+header button i,
+header .fa-bell,
+header .fa-cog,
+header .fa-sun,
+header .fa-moon {
+  background-color: transparent !important;
+  color: #d1d5db !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+header button:hover i {
+  color: #f3f4f6 !important;
+}
+
+button i {
+  background: none !important;
+  color: inherit;
+}
+
+/* Dark background fix */
+.bg-gray-50,
+.bg-white,
+.bg-neutral-100,
+section,
+aside {
+  background-color: #1f2937 !important;
+  color: #f3f4f6 !important;
+}
+/* Make all icons lighter and consistent */
+i,
+.fa {
+  color: #f3f4f6 !important; /* gray-100 */
+}
+button:hover i,
+.nav-link:hover i {
+  color: #ffffff !important; /* pure white */
+}
+
+/* On hover: brighter */
+
+  
+  p{
+      color: #e5e7eb !important;
+  }
+  
+  div{
+    -webkit-text-fill-color:#e5e7eb !important;
+  }
+
+/* Override Tailwind bg-white used in cards */
+.bg-white {
+  background-color: #2d3748 !important; /* gray-700 - a little lighter for contrast */
+  color: #f3f4f6 !important;
+}
+
+/* Optional: make text clearer */
+.bg-white p,
+.bg-white h2,
+.bg-white h3,
+.bg-white span {
+  color: #e5e7eb !important; /* gray-200 */
+}
+.pill-math {
+  background-color: #78350f !important;
+  color: #fde68a !important;
+}
+
+.pill-physics {
+  background-color: #3730a3 !important;
+  color: #e0e7ff !important;
+}
+
+.pill-chem {
+  background-color: #7f1d1d !important;
+  color: #fecaca !important;
+}
+
+.pill-bio {
+  background-color: #14532d !important;
+  color: #bbf7d0 !important;
+}
+
+.pill-lit {
+  background-color: #831843 !important;
+  color: #fbcfe8 !important;
+}
+
+.pill-hist {
+  background-color: #4c1d95 !important;
+  color: #ddd6fe !important;
+}
+
+input[type="file"] {
+  background-color: #1e293b !important;   /* match modal bg */
+  color: #f3f4f6 !important;              /* light text */
+  border: 1px solid #475569 !important;   /* soft gray border */
+}
+
+input[type="file"]::file-selector-button {
+  background-color: #334155 !important;   /* darker blue-gray */
+  color: #f3f4f6 !important;
+  border: none;
+  padding: 0.25rem 0.75rem;
+  margin-right: 0.5rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #475569 !important;
+}
+button.bg-gray-100 {
+  background-color: #374151 !important; /* Tailwind gray-700 */
+  color: #f3f4f6 !important;            /* Light text */
+}
+
+button.bg-gray-100:hover {
+  background-color: #4b5563 !important; /* darker on hover */
+}
+
+section.bg-blue-600 {
+  background: linear-gradient(to bottom right, #6f86a7b7, #113464b7) !important;
+}
+
+section.bg-blue-600 {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+/* Dark Mode Tweaks */
+.cancel-btn {
+  color: #d1d5db; /* gray-300 */
+  border-color: #4b5563; /* gray-600 */
+}
+
+.cancel-btn:hover {
+  background-color: #1f2937;
+  border-color: #9ca3af; /* gray-400 */
+}
+/* === Dark mode button styling === */
+.btn-approve {
+  background-color: #15803d !important; /* Tailwind green-700 */
+  color: #bbf7d0 !important;            /* Tailwind green-200 */
+}
+
+.btn-approve:hover {
+  background-color: #166534 !important; /* Tailwind green-800 */
+}
+
+.btn-reject {
+  background-color: #7f1d1d !important; /* Tailwind red-700 */
+  color: #fecaca !important;           /* Tailwind red-200 */
+}
+
+.btn-reject:hover {
+  background-color: #991b1b !important; /* Tailwind red-800 */
+}
+
+/* === Dark mode icon wrappers === */
+.icon-wrapper-pdf {
+  background-color: #1e40af !important; /* Tailwind blue-900 */
+}
+
+.icon-pdf {
+  color: #93c5fd !important; /* Tailwind blue-300 */
+}
+
+/* === Optional: Shared dark pills, dropdowns, etc. === */
+.dark select,
+.dark input {
+  background-color: #374151 !important;
+  color: #f3f4f6 !important;
+  border-color: #4b5563 !important;
+}
+/* === VIDEO === */
+.icon-wrapper-video {
+  background-color: #4c1d95 !important; /* Tailwind purple-900 */
+}
+
+.icon-video {
+  color: #c4b5fd !important; /* Tailwind purple-300 */
+}
+
+/* === POWERPOINT === */
+.icon-wrapper-ppt {
+  background-color: #7c2d12 !important; /* Tailwind orange-900 */
+}
+
+.icon-ppt {
+  color: #fdba74 !important; /* Tailwind orange-300 */
+}
+/* Pending Pill */
+span.status-pill.pending {
+  background-color: #fef9c3; /* light yellow */
+  color: #92400e;
+}
+
+.dark span.status-pill.pending {
+  background-color: #78350f !important; /* darker amber for dark mode */
+  color: #fde68a !important;
+}
+
+/* Approved Pill */
+span.status-pill.approved {
+  background-color: #d1fae5; /* light green */
+  color: #065f46;
+}
+
+.dark span.status-pill.approved {
+  background-color: #064e3b !important; /* darker green */
+  color: #bbf7d0 !important;
+}

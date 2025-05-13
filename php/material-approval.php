@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" class="transition duration-300">
+ 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduHub - Approval</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../scripts/material-approval-settings.js"></script>
+  <link rel="stylesheet" href="../styles/style1.css">
+  <link id="dark-theme" rel="stylesheet" href="../styles/dark.css" disabled>
+</head>
+ 
+<body class="h-full text-base-content bg-gray-50">
+  <div class="min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+      <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-8">
+          <h1 class="text-2xl font-bold text-blue-600">EduHub Admin</h1>
+          <nav class="hidden md:flex space-x-6">
+            <a href="../php/admin-dashboard.php" class="nav-link text-gray-600 hover:text-blue-600">Dashboard</a>
+            <a href="../php/material-approval.php" class="nav-link text-gray-600 hover:text-blue-600">Material Approval</a>
+          </nav>
+        </div>
+ 
+        <div class="flex items-center space-x-4">
+          <button aria-label="Notifications" class="text-gray-600 hover:text-blue-600">
+            <i class="fa-regular fa-bell text-xl"></i>
+          </button>
+          <button id="theme-toggle" class="text-gray-600 hover:text-blue-600 text-xl">
+            <i id="theme-icon" class="fa-regular fa-moon"></i>
+          </button>
+          <button class="text-gray-600 hover:text-blue-600" id="settings-btn" aria-label="Settings">
+            <i class="fa-solid fa-cog text-xl"></i>
+          </button>
+          <img id="header-profile-img" class="w-10 h-10 rounded-full" src="<?= isset($_COOKIE['user_image']) ? '../php/' . htmlspecialchars($_COOKIE['user_image']) : '../images/avatar.png' ?>" alt="Profile image" />
+        
+        </div>
+       
+      </div>
+    </header>
+ 
+    <main class="container mx-auto px-4 py-8">
+      <!-- Filters -->
+      <div class="bg-white rounded-xl shadow-sm p-6 mb-8">
+        <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+          <div class="flex-1 relative">
+            <i class="fa-solid fa-search absolute left-4 top-3.5 text-gray-400"></i>
+            <input id="search-input" type="text" placeholder="Search study materials..."
+              class="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 input-dark" />
+          </div>
+          <div class="flex space-x-4">
+            <select id="grade-filter"
+              class="px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 select-dark">
+              <option>All Grades</option>
+              <option>Grade 9</option>
+              <option>Grade 10</option>
+              <option>Grade 11</option>
+              <option>Grade 12</option>
+            </select>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Category Pills -->
+      <div id="category-pills" class="flex flex-wrap gap-3 mb-8">
+        <button class="category-btn px-4 py-2 rounded-full font-medium ring-2 ring-offset-2 ring-blue-500">All</button>
+        <button class="category-btn pill-math">Mathematics</button>
+        <button class="category-btn pill-physics">Physics</button>
+        <button class="category-btn pill-chem">Chemistry</button>
+        <button class="category-btn pill-bio">Biology</button>
+        <button class="category-btn pill-lit">Literature</button>
+        <button class="category-btn pill-hist">History</button>
+      </div>
+ 
+      <!-- Materials List -->
+      <div id="materials-list" class="space-y-4">
+        <!-- Materials will be dynamically inserted here by JavaScript -->
+      </div>
+ 
+      <!-- Popup -->
+      <div id="popup-overlay" class="popup-overlay hidden fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+      <div id="popup" class="popup hidden fixed z-50 p-6 max-w-sm w-full bg-white rounded-lg shadow-lg dark:bg-gray-800">
+        <h3 id="popup-message" class="text-lg font-semibold dark:text-white"></h3>
+        <div class="popup-buttons flex justify-between mt-4">
+          <button id="confirm-btn" class="confirm bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700">Confirm</button>
+          <button id="cancel-btn" class="cancel bg-gray-300 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-400 dark:bg-gray-600 dark:text-white dark:hover:bg-gray-500">Cancel</button>
+        </div>
+      </div>
+    </main>
+  </div>
+ 
+  <script src="../scripts/Material-Approval.js"></script>
+</body>
+</html>
+ 

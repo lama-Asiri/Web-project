@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en" class="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQs</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../styles/style1.css">
+  <link id="dark-theme" rel="stylesheet" href="../styles/dark.css" disabled>
+  
+  <!-- Core Functional Scripts -->
+  <script src="../scripts/material-approval-settings.js"></script>
+  <script src="../scripts/header.js"></script>
+  <script src="../scripts/theme-switch.js"></script>
+  <script src="../scripts/theme-toggle.js"></script>
+  <script src="../scripts/Nav-highlight.js"></script>
+  <script src="../scripts/Toast.js"></script>
+  <script src="../scripts/faq-interactions.js"></script> <!-- faq.html -->
+  <script src="../scripts/profile-img.js"></script>
+
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+  <div class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <div id="header"></div>
+
+    <main class="max-w-4xl mx-auto px-4 py-16">
+      <section class="text-center mb-12">
+        <h2 class="text-4xl font-bold mb-2">Frequently Asked Questions</h2>
+        <p class="text-gray-500">
+          Find answers to common questions about our educational platform
+        </p>
+      </section>
+
+      <!-- Ask a Question Section -->
+      <section class="bg-white rounded-xl shadow-md p-6 mb-8">
+        <button class="flex justify-between items-center w-full text-left" id="ask-question-btn">
+          <span class="text-xl font-semibold">
+            <i class="fa-regular fa-circle-question mr-2"></i>Ask a Question
+          </span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <form id="question-Form" action="../php/Faq-cont.php" method="POST">
+        <div id="ask-question-content" class="mt-4 space-y-4 hidden">
+          <input type="text" placeholder="Subject" id="subject-text"
+            class="w-full p-3 rounded-lg border bg-gray-50 text-sm" />
+          <input type="email" placeholder="Email"
+            class="w-full p-3 rounded-lg border bg-gray-50 text-sm" id="email-text" />
+          <textarea placeholder="Question"
+            class="w-full p-3 rounded-lg border bg-gray-50 text-sm h-32" id="question-text"></textarea>
+          <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700" id="sumbitQusetion-Button">Submit</button>
+        </div>
+      </form>
+      </section>
+
+      <!-- FAQ Sections -->
+      <section class="space-y-6">
+        <!-- Course Related -->
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <button class="flex justify-between items-center w-full text-left" id="course-related-btn">
+            <span class="text-xl font-semibold">
+              <i class="fa-solid fa-graduation-cap mr-2"></i>Course Related
+            </span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div id="course-related-content" class="mt-4 space-y-4 hidden">
+            <details class="border border-gray-200 rounded-lg">
+              <summary class="p-4 cursor-pointer">How do I access my courses?</summary>
+              <div class="px-4 pb-4 text-sm text-gray-700">
+                Log into your account and navigate to "My Courses" to view your enrolled classes.
+              </div>
+            </details>
+            <details class="border border-gray-200 rounded-lg">
+              <summary class="p-4 cursor-pointer">Can I download course materials?</summary>
+              <div class="px-4 pb-4 text-sm text-gray-700">
+                Yes! Look for the download icon next to each resource.
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- Payment Related -->
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <button class="flex justify-between items-center w-full text-left" id="payment-related-btn">
+            <span class="text-xl font-semibold">
+              <i class="fa-solid fa-credit-card mr-2"></i>Payment
+            </span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div id="payment-related-content" class="mt-4 space-y-4 hidden">
+            <details class="border border-gray-200 rounded-lg">
+              <summary class="p-4 cursor-pointer">What payment methods are accepted?</summary>
+              <div class="px-4 pb-4 text-sm text-gray-700">
+                We accept all major credit/debit cards and online wallets.
+              </div>
+            </details>
+            <details class="border border-gray-200 rounded-lg">
+              <summary class="p-4 cursor-pointer">Is my payment information secure?</summary>
+              <div class="px-4 pb-4 text-sm text-gray-700">
+                Absolutely. All payments are processed through a secure, encrypted system.
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- Technical Support -->
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <button class="flex justify-between items-center w-full text-left" id="technical-support-btn">
+            <span class="text-xl font-semibold">
+              <i class="fa-solid fa-wrench mr-2"></i>Technical Support
+            </span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div id="technical-support-content" class="mt-4 space-y-4 hidden">
+            <details class="border border-gray-200 rounded-lg">
+              <summary class="p-4 cursor-pointer">I forgot my password, what do I do?</summary>
+              <div class="px-4 pb-4 text-sm text-gray-700">
+                Use the “Forgot Password” option on the login page to reset your password.
+              </div>
+            </details>
+            <details class="border border-gray-200 rounded-lg">
+              <summary class="p-4 cursor-pointer">The site isn't loading properly. Help!</summary>
+              <div class="px-4 pb-4 text-sm text-gray-600">
+                Try refreshing the page or clearing your browser cache. If it persists, contact support.
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-white text-center text-sm py-6 border-t">
+      <p>&copy; 2025 EduHub. All rights reserved.</p>
+    </footer>
+
+  </div>
+  <div id="toast-container" class="fixed bottom-5 right-5 space-y-2 z-50"></div>
+</body>
+
+</html>

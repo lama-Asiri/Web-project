@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" class="transition duration-300">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduHub – Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../styles/style1.css" />
+    <link id="dark-theme" rel="stylesheet" href="../styles/dark.css" disabled>
+    
+    <!-- Core Functional Scripts -->
+
+<script src="../scripts/theme-switch.js"></script>
+<script src="../scripts/theme-toggle.js"></script>
+<script src="../scripts/Nav-highlight.js"></script>
+<script src="../scripts/Toast.js"></script>
+
+<script src="../scripts/login-validation.js"></script>         <!-- login.html -->
+    <style>
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 0.6s ease-out both;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-base-content min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <header id="header" class="bg-white shadow-md" role="banner">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Left: Logo + Nav Links -->
+            <div class="flex items-center space-x-8">
+                <h1 class="text-2xl font-bold text-blue-600">EduHub</h1>
+                <nav class="hidden md:flex space-x-6" role="navigation" aria-label="Main navigation">
+                    <a href="welcome.html" class="nav-link text-gray-600 hover:text-blue-600">Home</a>
+                   
+                    <a href="faq.html" class="nav-link text-gray-600 hover:text-blue-600">FAQ</a>
+                </nav>
+            </div>
+
+            <!-- Right: Auth Links -->
+            <div class="flex items-center space-x-4">
+
+                <a href="login.html" class="nav-link text-gray-600 hover:text-blue-600 font-medium">Login</a>
+                <a href="SignUp.html"
+                    class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
+                    Sign Up
+                </a>
+                <button id="theme-toggle" aria-label="Toggle Dark Mode"
+                    class="text-gray-600 hover:text-blue-600 text-xl">
+                    <i id="theme-icon" class="fa-regular fa-moon"></i>
+                </button>
+
+            </div>
+        </div>
+    </header>
+
+
+
+
+
+    <!-- Login Form -->
+    <!-- ...head and navbar same as before... -->
+
+    <main class="flex-grow flex items-center justify-center px-4 py-12 animate-fade-in">
+        <div class="w-full max-w-md bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-2 text-center">Welcome Back</h2>
+            <p class="text-sm text-gray-600 text-center mb-6">Please enter your login credentials to continue.</p>
+
+            <form id="login-form" class="space-y-5">
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" 
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition" />
+                    <p id="email-error" class="text-red-500 text-sm mt-1 hidden">Please enter a valid email.</p>
+                </div>
+
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" 
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition" />
+                    <p id="password-error" class="text-red-500 text-sm mt-1 hidden">Password is required.</p>
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transform hover:scale-[1.015] transition duration-300">
+                    Log In
+                </button>
+
+                <p id="login-success" class="text-green-600 text-sm mt-4 text-center hidden">
+                    ✅ Login successful! Redirecting...
+                </p>
+            </form>
+
+            <p class="mt-6 text-sm text-center text-gray-600">
+                Don’t have an account?
+                <a href="SignUp.html" class="text-blue-600 hover:underline font-medium">Sign up here</a>
+            </p>
+        </div>
+    </main>
+
+    <!-- Login JS -->
+    <script>
+        const form = document.getElementById("login-form");
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+        const emailError = document.getElementById("email-error");
+        const passwordError = document.getElementById("password-error");
+        const successMsg = document.getElementById("login-success");
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            let valid = true;
+
+            // Reset errors
+            emailError.classList.add("hidden");
+            passwordError.classList.add("hidden");
+
+            if (!email.value.trim()) {
+                emailError.classList.remove("hidden");
+                valid = false;
+            }
+
+            if (!password.value.trim()) {
+                passwordError.classList.remove("hidden");
+                valid = false;
+            }
+
+            if (valid) {
+                successMsg.classList.remove("hidden");
+                // After password change success
+showToast("User logged in!", "success");
+
+
+                // Simulate redirect delay
+                setTimeout(() => {
+                    window.location.href = "home.html";
+                }, 1500);
+            }
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t text-center text-gray-500 py-4 text-sm">
+        &copy; 2025 EduHub. All rights reserved.
+    </footer>
+
+    <div id="toast-container" class="fixed bottom-5 right-5 space-y-2 z-50"></div>
+</body>
+
+</html>

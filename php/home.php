@@ -1,0 +1,114 @@
+<?php
+// Check if the user is logged in via cookie
+$user_id = isset($_COOKIE['user_id']) ? (int)$_COOKIE['user_id'] : 0;
+
+if ($user_id === 0) {
+    header("Location: login.php");
+    exit;
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en" class="transition duration-300">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduHub - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../styles/style1.css">
+  <link id="dark-theme" rel="stylesheet" href="../styles/dark.css" disabled>
+  
+  <!-- Core Functional Scripts -->
+
+<script src="../scripts/theme-switch.js"></script>
+
+<script src="../scripts/Nav-highlight.js"></script>
+<script src="../scripts/Toast.js"></script>
+<script src="../scripts/profile-img.js"></script>
+</head>
+
+<body class="h-full text-base-content">
+  <div class="min-h-screen bg-gray-50">
+
+    <!-- Header -->
+    <header id="header" class="bg-white shadow-md " role="banner">
+      <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <!-- Left: Logo + nav -->
+        <div class="flex items-center space-x-8">
+          <h1 class="text-2xl font-bold text-blue-600">EduHub</h1>
+          <nav class="hidden md:flex space-x-6" role="navigation" aria-label="Main navigation">
+            <a href="home.php" class="nav-link text-gray-600 hover:text-blue-600">Home</a>
+            <a href="metrials-student.php" class="nav-link text-gray-600 hover:text-blue-600">Materials</a>
+            <a href="../php/faq.php" class="nav-link text-gray-600 hover:text-blue-600">FAQ</a>
+          </nav>
+        </div>
+
+        <!-- Right: Icons -->
+        <div class="flex items-center space-x-4">
+          <button aria-label="Notifications" class="text-gray-600 hover:text-blue-600">
+            <i class="fa-regular fa-bell text-xl"></i>
+          </button>
+          <button id="theme-toggle" aria-label="Toggle Dark Mode" class="text-gray-600 hover:text-blue-600 text-xl">
+            <i id="theme-icon" class="fa-regular fa-moon"></i>
+          </button>
+
+          <button id="settings-btn" aria-label="Settings" class="text-gray-600 hover:text-blue-600">
+            <i class="fa-solid fa-cog text-xl"></i>
+          </button>
+
+          <img id="header-profile-img"
+     class="header-profile-img w-10 h-10 rounded-full"
+     src="<?= isset($_COOKIE['user_image']) ? '../php/update_profile.php' . $_COOKIE['user_image'] : '../images/avtar.png' ?>"
+     alt="Profile image" />
+      </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-blue-600 text-white text-center py-16">
+      <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-4">Welcome to Student Home</h2>
+        <p class="text-lg max-w-2xl mx-auto">
+          Your one-stop destination for quality educational materials and resources.
+        </p>
+      </div>
+    </section>
+
+    <!-- Goals Section -->
+    <section class="text-center py-16 bg-white">
+      <div class="container mx-auto px-6">
+        <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+          This platform offers interactive lessons, study resources, and engaging tools to make learning accessible and
+          enjoyable.<br />
+          Whether you’re exploring new subjects or mastering skills, it brings education to your fingertips—anytime,
+          anywhere!
+        </p>
+      </div>
+    </section>
+
+    <!-- Objective Section -->
+    <section class="relative bg-white py-16">
+      <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-10">
+        <img src="../images/head.jpg" alt="Objective" class="w-full lg:w-[500px] h-auto rounded-md shadow-md" />
+        <div class="text-right lg:text-left">
+          <h2 class="text-3xl font-semibold text-gray-800 mb-4">Our Objective</h2>
+          <p class="text-gray-700 mb-2">Provide study materials, and interactive tools to enhance students’
+            understanding.</p>
+          <p class="text-gray-700">Offer a structured platform where students can find educational content, FAQs.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-white border-t mt-12">
+      <div class="container mx-auto px-4 py-8 text-center text-gray-600">
+        &copy; 2025 EduHub. All Rights Reserved.
+      </div>
+    </footer>
+
+  </div>
+  <div id="toast-container" class="fixed bottom-5 right-5 space-y-2 z-50"></div>
+</body>
+
+</html>

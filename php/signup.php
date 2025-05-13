@@ -1,0 +1,230 @@
+<?php
+require_once 'config.php'; // this is correct, both are in php/
+
+$user_id = isset($_COOKIE['user_id']) ? (int)$_COOKIE['user_id'] : 0;
+
+if ($user_id != 0) {
+    header("Location:home.php");
+    exit;
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en" class="transition duration-300">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduHub – Sign Up</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../styles/style1.css" />
+  <link id="dark-theme" rel="stylesheet" href="../styles/dark.css" disabled>
+  
+  <!-- Core Functional Scripts -->
+
+<script src="../scripts/Theme-switch.js"></script>
+
+<script src="../scripts/Nav-highlight.js"></script>
+<script src="../scripts/Toast.js"></script>
+
+<script src="../scripts/signup-validation.js"></script>        <!-- signup.php -->
+<script src="../scripts/signup-switch.js"></script>             <!-- signup.php -->
+  <style>
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fade-in 0.6s ease-out both;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-base-content min-h-screen flex flex-col">
+  <!-- Navbar -->
+  <header id="header" class="bg-white shadow-md" role="banner">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <!-- Left: Logo + Nav Links -->
+      <div class="flex items-center space-x-8">
+        <h1 class="text-2xl font-bold text-blue-600">EduHub</h1>
+        <nav class="hidden md:flex space-x-6" role="navigation" aria-label="Main navigation">
+          <a href="welcome.php" class="nav-link text-gray-600 hover:text-blue-600">Home</a>
+          
+          <a href="../php/faq.php" class="nav-link text-gray-600 hover:text-blue-600">FAQ</a>
+        </nav>
+      </div>
+
+      <!-- Right: Auth Links -->
+      <div class="flex items-center space-x-4">
+        <a href="login.php" class="nav-link text-gray-600 hover:text-blue-600 font-medium">Login</a>
+        <a href="signup.php"
+          class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition">
+          Sign Up
+        </a>
+        <button id="theme-toggle" aria-label="Toggle Dark Mode" class="text-gray-600 hover:text-blue-600 text-xl">
+          <i id="theme-icon" class="fa-regular fa-moon"></i>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+
+
+
+
+
+  <!-- Sign-Up Section -->
+  <main class="flex-grow flex items-center justify-center px-4 py-12 animate-fade-in">
+    <div class="w-full max-w-2xl bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 p-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-2 text-center">Create Your Account</h2>
+      <p class="text-sm text-gray-600 text-center mb-6">Sign up as a student or teacher</p>
+
+      <!-- Toggle Buttons -->
+      <div class="flex mb-6 space-x-2">
+        <button id="user-tab"
+          class="flex-1 bg-blue-600 text-white font-medium py-2 rounded-lg shadow hover:bg-gray-200 transition">
+          User Sign-Up
+        </button>
+        <button id="teacher-tab"
+          class="flex-1 bg-gray-100 text-gray-700 font-medium py-2 rounded-lg hover:bg-gray-200 transition">
+          Teacher Sign-Up
+        </button>
+      </div>
+
+      <!-- USER SIGN-UP FORM -->
+      <form id="signup-form" method="post" action="/php/register.php" novalidate class="space-y-5 transition-all duration-300 opacity-100">
+
+        <input type="text" id="fullname" placeholder="Full Name"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+          required />
+        <p id="name-error" class="text-red-500 text-sm mt-1 hidden">Name is required.</p>
+
+        <input type="email" id="email" placeholder="Email"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+          required />
+        <p id="email-error" class="text-red-500 text-sm mt-1 hidden">Please enter a valid email.</p>
+
+        <input type="password" id="password" placeholder="Create password"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+          required />
+        <p id="password-error" class="text-red-500 text-sm mt-1 hidden">
+          Password must be at least 8 characters, include a capital letter, number and symbol.
+        </p>
+
+        <input type="password" id="confirm-password" placeholder="Confirm password"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+          required />
+        <p id="confirm-error" class="text-red-500 text-sm mt-1 hidden">Passwords do not match.</p>
+
+        <div class="flex items-start gap-2 text-sm text-gray-700">
+          <input type="checkbox" id="agree" class="accent-blue-600 mt-1" />
+          <label for="agree">I agree to the
+            <a href="#" class="text-blue-600 hover:underline">Terms and Conditions</a></label>
+        </div>
+        <p id="agree-error" class="text-red-500 text-sm mt-1 hidden">You must agree to the terms.</p>
+
+        <button type="submit"
+          class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transform hover:scale-[1.015] transition duration-300">
+          Sign Up
+        </button>
+
+        <p id="signup-success" class="text-green-600 text-sm mt-4 text-center hidden">
+          ✅ Account created! Redirecting to login...
+        </p>
+      </form>
+
+    
+      <!-- TEACHER SIGN-UP FORM -->
+      <form id="teacher-form" action="../php/register.php" method="POST" enctype="multipart/form-data" novalidate class="space-y-5 transition-all duration-300 hidden opacity-0">
+        <input type="text" id="t-name"name="username" placeholder="Full Name" required
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition" />
+        <p id="t-name-error" class="text-red-500 text-sm mt-1 hidden">Name is required.</p>
+
+        <input type="email" name="email" id="t-email" placeholder="Email" required
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition" />
+        <p id="t-email-error" class="text-red-500 text-sm mt-1 hidden">Valid email is required.</p>
+
+        <input type="password"  name="password" id="t-password" placeholder="Password" required
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition" />
+        <p id="t-password-error" class="text-red-500 text-sm mt-1 hidden">
+          Must be at least 8 characters, include uppercase, number, and symbol.
+        </p>
+
+        <input type="password" id="t-confirm" placeholder="Confirm password" required
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition" />
+        <p id="t-confirm-error" class="text-red-500 text-sm mt-1 hidden">Passwords do not match.</p>
+        <input type="hidden" name="role" value="teacher" />
+        <select  name="major" id="t-major" required
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+          <option value="">Select Major</option>
+          <option>Computer Science</option>
+          <option>Math</option>
+          <option>Physics</option>
+          <option>Chemistry</option>
+          <option>Other</option>
+        </select>
+        <p id="t-major-error" class="text-red-500 text-sm mt-1 hidden">Please select a major.</p>
+
+        <select name="degree" id="t-degree" required
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+          <option value="">Select Degree</option>
+          <option>Bachelor's</option>
+          <option>Master's</option>
+          <option>Ph.D.</option>
+        </select>
+        <p id="t-degree-error" class="text-red-500 text-sm mt-1 hidden">Please select a degree.</p>
+
+        <input name="cv_file" type="file" id="t-cv"
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition" />
+        <p id="t-cv-error" class="text-red-500 text-sm mt-1 hidden">Please upload your CV.</p>
+
+        <input  name="cert_file" type="file" id="t-cert"
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition" />
+        <p id="t-cert-error" class="text-red-500 text-sm mt-1 hidden">Please upload your certificates.</p>
+
+        <textarea name="about" id="t-bio" rows="4" placeholder="Tell us about yourself"
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:outline-none transition"></textarea>
+
+        <div class="flex items-start gap-2 text-sm text-gray-700">
+          <input type="checkbox" id="t-agree" class="accent-blue-600 mt-1" />
+          <label for="t-agree">I agree to the <a href="#" class="text-blue-600 hover:underline">Terms</a></label>
+        </div>
+        <p id="t-agree-error" class="text-red-500 text-sm mt-1 hidden">You must agree to continue.</p>
+
+        <button type="submit"  id="t-submit"
+          class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transform hover:scale-[1.015] transition duration-300">
+          Sign up request
+        </button>
+
+        <p id="t-success" class="text-green-600 text-sm mt-4 text-center hidden">
+          ✅ Account created! Redirecting...
+        </p>
+      </form>
+
+
+      <!-- Switch Login -->
+      <p class="mt-6 text-sm text-center text-gray-600">
+        Already have an account?
+        <a href="login.php" class="text-blue-600 hover:underline font-medium">Login here</a>
+      </p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t text-center text-gray-500 py-4 text-sm">
+    &copy; 2025 EduHub. All rights reserved.
+  </footer>
+  <div id="toast-container" class="fixed bottom-5 right-5 space-y-2 z-50"></div>
+</body>
+
+</html>
