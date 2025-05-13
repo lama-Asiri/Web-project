@@ -1,0 +1,11 @@
+# Ignore config file with sensitive credentials
+config.php
+
+# Ignore any environment files
+.env
+
+# Ignore other common sensitive files
+.DS_Store
+.vscode/
+node_modules/
+vendor/
